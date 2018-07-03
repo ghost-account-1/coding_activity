@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
+    'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -102,6 +104,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Custom Auth user model
 AUTH_USER_MODEL = 'app.MyUser'
+# Email backend for testing
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 # Internationalization

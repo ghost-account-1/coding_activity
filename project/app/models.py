@@ -2,6 +2,25 @@ from django.db import models
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser, PermissionsMixin
 )
+from django.db.models.signals import post_save
+from rest_framework.authtoken.models import Token
+from django.dispatch import receiver
+from django.core.mail import send_mail
+from django.conf import settings
+
+
+@receiver(post_save, sender=settings.AUTH_USER_MODEL)
+def send_email_after_user_creation(sender, instance=None, created=False, **kwargs):
+    if created:
+        send_mail(
+            'Activation Token',
+            'Here is your activation token: ' +
+            str(Token.objects.create(user=instance)),
+            'from@example.com',
+            [instance.email],
+            fail_silently=False,
+        )
+        print(instance.email)
 
 
 class MyUserManager(BaseUserManager):
