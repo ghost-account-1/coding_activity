@@ -22,12 +22,12 @@ from app import serializers
 
 
 router = routers.DefaultRouter()
-router.register(r'api/user', views.MyUserViewSet)
+router.register(r'users', views.MyUserViewSet, 'users')
 admin.autodiscover()
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^', include(router.urls)),
+    url(r'^api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='app')),
 ]

@@ -107,6 +107,13 @@ AUTH_USER_MODEL = 'app.MyUser'
 # Email backend for testing
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+# Custom Authentication
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
