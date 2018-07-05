@@ -37,15 +37,12 @@ class CustomAuthentication(authentication.TokenAuthentication):
     def authenticate_credentials(self, key):
         try:
             token = Token.objects.get(key=key)
-            #user_is_active = Token.objects.get(key=key).user.is_active
             if not token.user.is_active:
                 print ('is not active')
                 pass
             return (token.user, token)
         except:
-            pass
-
-
+            return super(CustomAuthentication, self).authenticate_credentials(key)
 
 class MyUserViewSet(viewsets.GenericViewSet,
                     mixins.CreateModelMixin,
