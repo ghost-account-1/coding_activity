@@ -116,6 +116,9 @@ REST_FRAMEWORK = {
     )
 }
 
+# Client ID and Client Secret
+CLIENT_ID = '5RN7o1SAvLOOByDhpTLBlpPOSM8nEgFVNieVxmOb'
+CLIENT_SECRET = 'O23DfXSleX9DAuM95uF3SIQgBtevnFYyX1yaa1a28qfRp8nq3xNJpGwFW0juMiVwH5y66LP2PlRQgn8hBNIH8QoW6S8nRP14ri4DgY8fQnBeVkV2Z2YprcReqSKMHlFf'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/

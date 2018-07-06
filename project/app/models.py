@@ -81,10 +81,6 @@ class MyUser(AbstractBaseUser, PermissionsMixin):
     def has_module_perms(self, app_label):
         return True
 
-    #@property
-    #def is_active(self):
-    #    return self.is_active
-
     @property
     def is_staff(self):
         return self.is_admin

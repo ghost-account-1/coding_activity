@@ -31,4 +31,5 @@ urlpatterns = [
     url(r'^api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='app')),
     url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
+    url(r'api/login/', views.login),
 ]
