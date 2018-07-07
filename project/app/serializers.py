@@ -25,8 +25,8 @@ class MyUserSerializer(serializers.HyperlinkedModelSerializer):
         user.save()
         return user
 
-
-class MyUserViewset(viewsets.ModelViewSet):
-    query = MyUser.objects.all()
-    serializer_class = MyUserSerializer
-
+class UserListSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = MyUser
+        fields = ('id', 'password', 'first_name')
+        extra_kwargs = {'password': {'write_only': True}}

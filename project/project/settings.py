@@ -116,9 +116,17 @@ REST_FRAMEWORK = {
     )
 }
 
+OAUTH2_PROVIDER = {
+    'SCOPES': {
+        'read': 'Read scope',
+        'write': 'Write scope',
+    },
+}
+
+
 # Client ID and Client Secret
-CLIENT_ID = '5RN7o1SAvLOOByDhpTLBlpPOSM8nEgFVNieVxmOb'
-CLIENT_SECRET = 'O23DfXSleX9DAuM95uF3SIQgBtevnFYyX1yaa1a28qfRp8nq3xNJpGwFW0juMiVwH5y66LP2PlRQgn8hBNIH8QoW6S8nRP14ri4DgY8fQnBeVkV2Z2YprcReqSKMHlFf'
+CLIENT_ID = 'IZpJOJZZoPoySyYy8teANN6qzbO8nYXXxXkVfk1x'
+CLIENT_SECRET = 'KOPI3CpKkmJxZIiZKNvAe9PG1gDARsUHI3NTPOCDgAYa1g2EO9pvvQoNG3DMPac0xGzg3kAD85HalQSYFLD7WBQEkitlnLApJYxh3zwmj20T8Bx8AJGx7IaCjl4SLhnI'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
