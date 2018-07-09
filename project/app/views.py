@@ -74,6 +74,27 @@ class ActivationViewSet(generics.UpdateAPIView):
         except:
             return Response({'detail': 'You need an activation token. Check your email.'})
 
+class ChangePasswordViewSet(generics.UpdateAPIView):
+    queryset = MyUser.objects.all()
+    serializer_class = MyUserSerializer
+    authentication_classes = (OAuth2Authentication,)
+
+    def update(self, request, pk=None):
+        try:
+            old_password = request.data['old_password']
+            new_password = request.data['new_password']
+        except:
+            return Response({"email":["This field is required."],"password":["This field is required."]})
+        if request.user and request.user.is_authenticated:
+            if authenticate(email=request.user.email, password=old_password):
+                request.user.set_password(request.data['new_password'])
+                request.user.save()
+                return Response({'detail': 'Password changed'})
+            return Response({'detail': 'User must have a wrong password'})
+        if request.oauth2_error:
+            return Response(request.oauth2_error)
+        return Response({'detail': 'User is not Authenticated'})
+
 class MyUserViewSet(viewsets.GenericViewSet,
                     mixins.CreateModelMixin,
                     mixins.ListModelMixin):
