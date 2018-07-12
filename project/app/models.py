@@ -20,7 +20,6 @@ def send_email_after_user_creation(sender, instance=None, created=False, **kwarg
             [instance.email],
             fail_silently=False,
         )
-        print(instance.email)
 
 
 class MyUserManager(BaseUserManager):
