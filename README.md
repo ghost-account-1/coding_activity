@@ -28,7 +28,9 @@ curl -X PATCH http://127.0.0.1:8000/api/activation/ -H 'Authorization: Token 6e0
 ```
 
 #### Login 
-**You need to register you app at http://127.0.0.1:8000/o/applications/register/ but first login as an admin at http://127.0.0.1:8000/admin/ *you need to create a superuser first**
+**You need to register you app at http://127.0.0.1:8000/o/applications/register/**
+**using With a Client type: Confidential Authorization grant type: Resource owner password-based)**
+**but first login as an admin at http://127.0.0.1:8000/admin/ (you need to create a superuser first)**
 ```
 curl -X POST \
   http://127.0.0.1:8000/api/login/ \
