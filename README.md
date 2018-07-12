@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ghost-account-1/coding_activity.svg?branch=dev)](https://travis-ci.org/ghost-account-1/coding_activity)
+
 ### You need python version 3
 - Requirements
     - pip install Django

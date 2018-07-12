@@ -70,9 +70,9 @@ class ActivationViewSet(generics.UpdateAPIView):
                     "email":myuser.email,
                     "first_name":myuser.first_name,
                     "last_name":myuser.last_name}
-            return Response(response)
+            return Response(response, status=status.HTTP_202_ACCEPTED)
         except:
-            return Response({'detail': 'You need an activation token. Check your email.'})
+            return Response({'detail': 'You need an activation token. Check your email.'}, status=status.HTTP_401_UNAUTHORIZED)
 
 class ChangePasswordViewSet(generics.UpdateAPIView):
     queryset = MyUser.objects.all()
@@ -84,16 +84,16 @@ class ChangePasswordViewSet(generics.UpdateAPIView):
             old_password = request.data['old_password']
             new_password = request.data['new_password']
         except:
-            return Response({"email":["This field is required."],"password":["This field is required."]})
+            return Response({"email":["This field is required."],"password":["This field is required."]}, status=status.HTTP_400_BAD_REQUEST)
         if request.user and request.user.is_authenticated:
             if authenticate(email=request.user.email, password=old_password):
                 request.user.set_password(request.data['new_password'])
                 request.user.save()
-                return Response({'detail': 'Password changed'})
-            return Response({'detail': 'User must have a wrong password'})
+                return Response({'detail': 'Password changed'}, status=status.HTTP_202_ACCEPTED)
+            return Response({'detail': 'User must have a wrong password'}, status=status.HTTP_401_UNAUTHORIZED)
         if request.oauth2_error:
-            return Response(request.oauth2_error)
-        return Response({'detail': 'User is not Authenticated'})
+            return Response(request.oauth2_error, status=request.status_code)
+        return Response({'detail': 'User is not Authenticated'}, status=status.HTTP_401_UNAUTHORIZED)
 
 class MyUserViewSet(viewsets.GenericViewSet,
                     mixins.CreateModelMixin,

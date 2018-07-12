@@ -1,0 +1,12 @@
+language: python
+before_install:
+    - sudo apt-get update
+    - sudo apt-get install python3-pip
+    - sudo pip3 install Django djangorestframework django-oauth-toolkit
+
+install:
+    - cd project
+    - python3 manage.py makemigrations
+    - python3 manage.py migrate
+
+script: python3 manage.py test
