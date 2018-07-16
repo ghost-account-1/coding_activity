@@ -1,24 +1,16 @@
 import ast
-from django.shortcuts import render
+import requests
 from django.contrib.auth import authenticate, get_user_model
 from rest_framework import viewsets, status, mixins
 from app.models import MyUser
 from app.serializers import MyUserSerializer, UserListSerializer
 from rest_framework.response import Response
-from rest_framework import permissions, authentication, exceptions
-from rest_framework.decorators import action, api_view, authentication_classes
+from rest_framework import authentication, exceptions
+from rest_framework.decorators import api_view, authentication_classes
 from rest_framework.authtoken.models import Token
 from project.settings import CLIENT_ID, CLIENT_SECRET
-from django.urls import reverse
-import oauth2_provider.urls
-import requests
-from requests.auth import HTTPBasicAuth
-from oauth2_provider.contrib.rest_framework import TokenHasReadWriteScope, TokenHasScope, TokenMatchesOASRequirements, IsAuthenticatedOrTokenHasScope
 from oauth2_provider.contrib.rest_framework import OAuth2Authentication
-from rest_framework.viewsets import ModelViewSet
 from rest_framework import generics
-from datetime import datetime, timedelta
-import pytz
 
 
 class ActivationAuthentication(authentication.TokenAuthentication):

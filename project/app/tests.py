@@ -1,14 +1,8 @@
 from django.urls import reverse
 from rest_framework import status
-from rest_framework.test import APITestCase, APITransactionTestCase
+from rest_framework.test import APITestCase
 from rest_framework.authtoken.models import Token
 from app.models import MyUser
-from app.views import login, MyUserViewSet
-import requests
-from rest_framework.test import APIRequestFactory
-from requests.auth import HTTPBasicAuth
-from rest_framework.test import force_authenticate
-from rest_framework.test import APIRequestFactory
 
 class MyUserTests(APITestCase):
     def test_create_account_and_token_and_is_not_active(self):
